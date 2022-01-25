@@ -64,6 +64,6 @@ public class Animal
     }
     void animalStat()
     {
-        System.out.println("Jestem "+species+" o imieniu "+name+". Żyję od  "+age+" lat, a ważę "+getWeight()+" kg ");
+        System.out.println(species+" o imieniu "+name+". Żyje od  "+age+" lat, a waży "+getWeight()+" kg ");
     }
 }

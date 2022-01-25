@@ -42,6 +42,21 @@ public class Main {
       cat.feed(1.0);
       cat.takeForWalk();
 
+      Car impala = new Car("Impala","Chevrolet");
+      impala.typeOfFuel ="Benzyna";
+      impala.color = "Czarnym";
+      impala.yearOfProduction= 1967;
+
+      Human Tom = new Human();
+      Tom.firstName = "Tom";
+      Tom.lastName = "Mighty";
+      Tom.pet = dog;
+      Tom.myCar = impala;
+      Tom.humanStat();
+      impala.CarStat();
+      dog.animalStat();
+
+
 
 
     }
