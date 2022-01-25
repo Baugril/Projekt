@@ -6,4 +6,5 @@ public class Phone
     String model;
     Double screenSize;
     String os;
+
 }

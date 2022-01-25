@@ -40,6 +40,7 @@ public class Main {
       cat.takeForWalk();
       cat.takeForWalk();
       cat.feed(1.0);
+      cat.takeForWalk();
 
 
 
