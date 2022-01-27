@@ -1,24 +1,27 @@
-package com.company;
+package com.company.creatures;
 
+import com.company.creatures.Animal;
 import com.company.devices.Car;
 import com.company.devices.Phone;
 
 import java.time.LocalDate;
 
-public class Human
+public class Human extends Animal
 {
+
     String firstName;
     String lastName;
-    Animal pet;
+    public Animal pet;
     private Car myCar;
     private Double salary;
     private LocalDate  accessTime;
     private Double balance;
-    Double cash;
+    public Double cash;
     public Phone mobile;
 
-    public Human(String firstName, String lastName, Double cash)
+    public Human(String firstName, String lastName, Double cash,String species)
     {
+        super(species);
         this.firstName = firstName;
         this.lastName = lastName;
         this.cash = cash;
@@ -29,6 +32,7 @@ public class Human
         this.myCar = null;
         this.mobile = null;
     }
+
 
     public Phone getMobile()
     {

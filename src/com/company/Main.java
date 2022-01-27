@@ -1,5 +1,8 @@
 package com.company;
 
+import com.company.creatures.Animal;
+import com.company.creatures.Human;
+import com.company.creatures.Pet;
 import com.company.devices.Car;
 import com.company.devices.Phone;
 
@@ -7,10 +10,10 @@ public class Main {
 
     public static void main(String[] args)
     {
-	  Animal dog = new Animal("pies");
+	  Animal dog = new Pet("pies");
       dog.age = 4;
       dog.name = "Aggro";
-      Animal cat = new Animal("kot");
+      Animal cat = new Pet("kot");
       cat.age = 2;
       cat.name = "Niau Niau";
 
@@ -28,16 +31,13 @@ public class Main {
       Car Ford2 = new Car("Puma","Ford",1995,"Benzyna","Silver",2000.0);
       Car Ford3 = new Car("Pumba","Ford",1995,"Benzyna","Silver",2000.0);
 
-      Human Tom = new Human("Tom","Mighty",12500.0);
-      Tom.firstName = "Tom";
-      Tom.lastName = "Mighty";
+      Human Tom = new Human("Tom","Mighty",12500.0,"Homo Sapiens");
       Tom.pet = dog;
 
 
       Tom.getSalary();
 
       Tom.setSalary(3250.0);
-      Tom.lastSalary();
       Tom.setMyCar(impala);
       System.out.println(Ford.equals(Ford2));
       System.out.println(Ford.equals(Ford3));
@@ -51,7 +51,7 @@ public class Main {
       Ford.turnOn();
       nokia.turnOn();
 
-      Human top = new Human("Top","Secret",4500.0);
+      Human top = new Human("Top","Secret",4500.0,"Homo Sapiens");
       top.pet=cat;
       top.setMobile(nokia);
       Tom.pet.sell(top,Tom,1300.0);
@@ -63,6 +63,8 @@ public class Main {
 
       top.getMobile().sell(top,Tom,800.0);
       System.out.println(Tom.cash+" zł zostało kupującemu "+top.cash+" zł ma sprzedający.");
+      Tom.pet.feed();
+      Tom.pet.takeForWalk();
 
 
 
