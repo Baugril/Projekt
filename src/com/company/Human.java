@@ -1,6 +1,7 @@
 package com.company;
 
 import com.company.devices.Car;
+import com.company.devices.Phone;
 
 import java.time.LocalDate;
 
@@ -13,12 +14,30 @@ public class Human
     private Double salary;
     private LocalDate  accessTime;
     private Double balance;
+    Double cash;
+    public Phone mobile;
 
-    public Human()
+    public Human(String firstName, String lastName, Double cash)
     {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.cash = cash;
         this.salary = 4500.0;
         this.accessTime = LocalDate.now();
         this.balance = this.salary;
+        this.pet = null;
+        this.myCar = null;
+        this.mobile = null;
+    }
+
+    public Phone getMobile()
+    {
+        return mobile;
+    }
+
+    public void setMobile(Phone mobile)
+    {
+        this.mobile = mobile;
     }
 
     public Car getMyCar()
@@ -64,16 +83,28 @@ public class Human
         }
     }
 
-    void humanStat()
-    {
-        System.out.println(firstName+" "+lastName +" Posiadany samochód i zwierzę to: ");
-    }
-
-
     void lastSalary()
     {
 
         System.out.println("Nowe wynagrodzenie wynosi : "+salary+" zł.");
+    }
+
+    public Double getCash()
+    {
+        return cash;
+    }
+
+    public void setCash(Double cash)
+    {
+        this.cash = cash;
+    }
+    public void carBuyer(Car forMe)
+    {
+        this.myCar = forMe;
+    }
+    public void carSeller()
+    {
+        this.myCar = null;
     }
 
     @Override

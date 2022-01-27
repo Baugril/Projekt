@@ -1,5 +1,8 @@
 package com.company.devices;
 
+import com.company.Human;
+import com.company.Sallebly;
+
 import java.util.Objects;
 
 public class Car extends Device
@@ -19,8 +22,31 @@ public class Car extends Device
 
    public void turnOn()
    {
-       System.out.println("Brum brum brum...");
+       System.out.println("Pyrpyrpyrpyr khłe khłe..");
    }
+
+ public void sell (Human seller,Human buyer,Double price)
+  {
+      if (seller.getMyCar()!= null)
+      {
+          if (buyer.getCash() >= price)
+          {
+              buyer.setCash(buyer.getCash()-price);
+              seller.setCash(seller.getCash() + price);
+              buyer.carBuyer(seller.getMyCar());
+              seller.carSeller();
+              System.out.println("Mam ten kloc, mam teen klooooc -> znaczy się autko");
+          }
+          else
+          {
+              System.out.println("Brakło kaski ;(");
+          }
+      }
+      else
+      {
+          System.out.println("Hej zaraz Ty wcale nie masz auta !!!");
+      }
+  }
 
     @Override
     public boolean equals(Object o) {

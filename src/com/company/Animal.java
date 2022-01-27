@@ -1,6 +1,6 @@
 package com.company;
 
-public class Animal
+public class Animal implements Sallebly
 {
     private  static final Double DEFAULT_ANIMAL_WEIGHT = 1.3;
     private  static final Double DEFAULT_DOG_WEIGHT = 13.0;
@@ -10,7 +10,7 @@ public class Animal
     String name;
     private Double weight;
     Integer age;
-    Boolean alive;
+    Boolean alive =true;
 
     public Animal (String species)
     {
@@ -41,6 +41,13 @@ public class Animal
             System.out.println("Ważę "+getWeight()+" kg.");
         }
     }
+
+    public Animal(String species, String name, Integer age) {
+        this.species = species;
+        this.name = name;
+        this.age = age;
+    }
+
     Double getWeight()
     {
         return weight;
@@ -62,9 +69,27 @@ public class Animal
             System.out.println("Spaliłem całe jedzonko! Teraz ważę "+weight+"kg");
         }
     }
-    void animalStat()
+    public void sell (Human seller, Human buyer ,Double price)
     {
-        System.out.println(species+" o imieniu "+name+". Żyje od  "+age+" lat, a waży "+getWeight()+" kg ");
+        if (seller.pet != null)
+        {
+            if (buyer.getCash() >= price)
+            {
+                buyer.setCash(buyer.getCash()-price);
+                seller.setCash(seller.getCash()+price);
+                buyer.pet= seller.pet;
+                seller.pet = null;
+                System.out.println("Mam sierściucha !! mam sierściucha !!");
+            }
+            else
+            {
+                System.out.println("Nie stać mnie na to piękne , włochate, zaślinione, zwierzątko bueeee");
+            }
+        }
+        else
+        {
+            System.out.println("Silent !!!! Nie masz zwierzaka ? , jak to nie masz ?! I will kill you");
+        }
     }
 
     @Override

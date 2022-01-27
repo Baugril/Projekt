@@ -14,43 +14,21 @@ public class Main {
       cat.age = 2;
       cat.name = "Niau Niau";
 
-      Double dogWeightBeforEating = dog.getWeight();
-
-      //dog.animalStat();
-
+      //Double dogWeightBeforEating = dog.getWeight();
 
      /* dog.feed(1.0);
       dog.feed(1.0);
-      System.out.println("Po jedzeniu przytyłem "+(dog.getWeight() - dogWeightBeforEating+ "kg"));
+      System.out.println("Po jedzeniu przytyłem "+(dog.getWeight() - dogWeightBeforEating+ "kg"));*/
 
       dog.takeForWalk();
-      dog.takeForWalk();
-      dog.takeForWalk();
-      dog.takeForWalk();
-      dog.takeForWalk();
-      dog.takeForWalk();
-      dog.takeForWalk();
-      dog.takeForWalk();
-      dog.takeForWalk();
-      dog.takeForWalk();
 
-      dog.feed(2.0);
-      cat.animalStat();
-      cat.feed(1.0);
-      cat.feed(1.0);
-      cat.takeForWalk();
-      cat.takeForWalk();
-      cat.takeForWalk();
-      cat.takeForWalk();
-      cat.feed(1.0);
-      cat.takeForWalk();*/
 
       Car impala = new Car("Impala","Chevrolet",1967,"Benzyna","Czarny",33000.0);
       Car Ford = new Car("Puma","Ford",1995,"Benzyna","Silver",2000.0);
       Car Ford2 = new Car("Puma","Ford",1995,"Benzyna","Silver",2000.0);
       Car Ford3 = new Car("Pumba","Ford",1995,"Benzyna","Silver",2000.0);
 
-      Human Tom = new Human();
+      Human Tom = new Human("Tom","Mighty",12500.0);
       Tom.firstName = "Tom";
       Tom.lastName = "Mighty";
       Tom.pet = dog;
@@ -72,6 +50,21 @@ public class Main {
 
       Ford.turnOn();
       nokia.turnOn();
+
+      Human top = new Human("Top","Secret",4500.0);
+      top.pet=cat;
+      top.setMobile(nokia);
+      Tom.pet.sell(top,Tom,1300.0);
+      System.out.println(Tom.cash+" zł zostało kupującemu "+top.cash+" zł ma sprzedający.");
+
+      top.setMyCar(Ford3);
+      Tom.getMyCar().sell(top,Tom,5000.0);
+      System.out.println(Tom.cash+" zł zostało kupującemu "+top.cash+" zł ma sprzedający.");
+
+      top.getMobile().sell(top,Tom,800.0);
+      System.out.println(Tom.cash+" zł zostało kupującemu "+top.cash+" zł ma sprzedający.");
+
+
 
 
 
