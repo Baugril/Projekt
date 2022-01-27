@@ -2,28 +2,25 @@ package com.company.devices;
 
 import java.util.Objects;
 
-public class Car
+public class Car extends Device
 {
-    final String model;
-    final String producer;
-    Integer yearOfProduction;
+
+
     String typeOfFuel;
     String color;
     public Double value;
 
     public Car(String model, String producer, Integer yearOfProduction, String typeOfFuel, String color, Double value) {
-        this.model = model;
-        this.producer = producer;
-        this.yearOfProduction = yearOfProduction;
+        super(model, producer, yearOfProduction);
         this.typeOfFuel = typeOfFuel;
         this.color = color;
         this.value = value;
     }
 
-    void CarStat()
-    {
-        System.out.println("Posiada model samochodu "+model+" wyprodukowany przez "+ producer+ " w roku "+yearOfProduction+ " o kolorze "+color+" rodzaj paliwa "+typeOfFuel);
-    }
+   public void turnOn()
+   {
+       System.out.println("Brum brum brum...");
+   }
 
     @Override
     public boolean equals(Object o) {
@@ -41,12 +38,12 @@ public class Car
     @Override
     public String toString() {
         return "Car{" +
-                "model='" + model + '\'' +
-                ", producer='" + producer + '\'' +
-                ", yearOfProduction=" + yearOfProduction +
-                ", typeOfFuel='" + typeOfFuel + '\'' +
+                "typeOfFuel='" + typeOfFuel + '\'' +
                 ", color='" + color + '\'' +
                 ", value=" + value +
+                ", model='" + model + '\'' +
+                ", producer='" + producer + '\'' +
+                ", yearOfProduction=" + yearOfProduction +
                 '}';
     }
 }

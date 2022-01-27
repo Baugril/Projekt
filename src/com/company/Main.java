@@ -1,6 +1,7 @@
 package com.company;
 
 import com.company.devices.Car;
+import com.company.devices.Phone;
 
 public class Main {
 
@@ -67,7 +68,10 @@ public class Main {
       System.out.println(dog);
       System.out.println(Tom);
       System.out.println(impala);
-      System.out.println();
+      Phone nokia = new Phone("3310","Nokia",1,2.0,"A1");
+
+      Ford.turnOn();
+      nokia.turnOn();
 
 
 
