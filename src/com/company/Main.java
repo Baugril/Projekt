@@ -16,7 +16,7 @@ public class Main {
       dog.animalStat();
 
 
-      dog.feed(1.0);
+     /* dog.feed(1.0);
       dog.feed(1.0);
       System.out.println("Po jedzeniu przytyłem "+(dog.getWeight() - dogWeightBeforEating+ "kg"));
 
@@ -40,7 +40,7 @@ public class Main {
       cat.takeForWalk();
       cat.takeForWalk();
       cat.feed(1.0);
-      cat.takeForWalk();
+      cat.takeForWalk();*/
 
       Car impala = new Car("Impala","Chevrolet");
       impala.typeOfFuel ="Benzyna";
@@ -55,6 +55,11 @@ public class Main {
       Tom.humanStat();
       impala.CarStat();
       dog.animalStat();
+      Tom.getSalary();
+
+      Tom.setSalary(3150.0);
+      System.out.println(Tom);
+
 
 
 
