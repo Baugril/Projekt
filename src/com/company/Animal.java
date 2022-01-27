@@ -66,4 +66,15 @@ public class Animal
     {
         System.out.println(species+" o imieniu "+name+". Żyje od  "+age+" lat, a waży "+getWeight()+" kg ");
     }
+
+    @Override
+    public String toString() {
+        return "Animal{" +
+                "species='" + species + '\'' +
+                ", name='" + name + '\'' +
+                ", weight=" + weight +
+                ", age=" + age +
+                ", alive=" + alive +
+                '}';
+    }
 }

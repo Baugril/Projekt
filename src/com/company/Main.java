@@ -1,5 +1,7 @@
 package com.company;
 
+import com.company.devices.Car;
+
 public class Main {
 
     public static void main(String[] args)
@@ -43,7 +45,9 @@ public class Main {
       cat.takeForWalk();*/
 
       Car impala = new Car("Impala","Chevrolet",1967,"Benzyna","Czarny",33000.0);
-
+      Car Ford = new Car("Puma","Ford",1995,"Benzyna","Silver",2000.0);
+      Car Ford2 = new Car("Puma","Ford",1995,"Benzyna","Silver",2000.0);
+      Car Ford3 = new Car("Pumba","Ford",1995,"Benzyna","Silver",2000.0);
 
       Human Tom = new Human();
       Tom.firstName = "Tom";
@@ -56,6 +60,14 @@ public class Main {
       Tom.setSalary(3250.0);
       Tom.lastSalary();
       Tom.setMyCar(impala);
+      System.out.println(Ford.equals(Ford2));
+      System.out.println(Ford.equals(Ford3));
+      System.out.println(Ford == Ford2);
+      System.out.println(Ford2 == Ford3);
+      System.out.println(dog);
+      System.out.println(Tom);
+      System.out.println(impala);
+      System.out.println();
 
 
 

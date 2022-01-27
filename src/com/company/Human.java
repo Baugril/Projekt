@@ -1,6 +1,7 @@
 package com.company;
 
-import java.sql.SQLOutput;
+import com.company.devices.Car;
+
 import java.time.LocalDate;
 
 public class Human
@@ -73,5 +74,18 @@ public class Human
     {
 
         System.out.println("Nowe wynagrodzenie wynosi : "+salary+" zł.");
+    }
+
+    @Override
+    public String toString() {
+        return "Human{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", pet=" + pet +
+                ", myCar=" + myCar +
+                ", salary=" + salary +
+                ", accessTime=" + accessTime +
+                ", balance=" + balance +
+                '}';
     }
 }
