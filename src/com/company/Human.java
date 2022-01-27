@@ -1,5 +1,6 @@
 package com.company;
 
+import java.sql.SQLOutput;
 import java.time.LocalDate;
 
 public class Human
@@ -7,7 +8,7 @@ public class Human
     String firstName;
     String lastName;
     Animal pet;
-    Car myCar;
+    private Car myCar;
     private Double salary;
     private LocalDate  accessTime;
     private Double balance;
@@ -17,6 +18,29 @@ public class Human
         this.salary = 4500.0;
         this.accessTime = LocalDate.now();
         this.balance = this.salary;
+    }
+
+    public Car getMyCar()
+    {
+        return myCar;
+    }
+
+    public void setMyCar(Car myCar)
+    {
+       if (this.salary > myCar.value)
+       {
+           System.out.println("Udało Ci się kupić auto za gotówkę");
+           this.myCar =myCar;
+       }
+       else if (this.salary > (myCar.value / 12))
+       {
+           System.out.println("Udało się kupić auto na kredyt.");
+           this.myCar = myCar;
+       }
+       else
+       {
+           System.out.println("Potrzebiujesz podwyżki lub zmień pracę ,żeby było Cie stać na to auto");
+       }
     }
 
     public void getSalary()
@@ -44,8 +68,10 @@ public class Human
         System.out.println(firstName+" "+lastName +" Posiadany samochód i zwierzę to: ");
     }
 
-    @Override
-    public String toString() {
-        return "Nowe wynagrodzenie wynosi : "+salary+" zł.";
+
+    void lastSalary()
+    {
+
+        System.out.println("Nowe wynagrodzenie wynosi : "+salary+" zł.");
     }
 }

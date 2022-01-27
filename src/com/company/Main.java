@@ -13,7 +13,7 @@ public class Main {
 
       Double dogWeightBeforEating = dog.getWeight();
 
-      dog.animalStat();
+      //dog.animalStat();
 
 
      /* dog.feed(1.0);
@@ -42,23 +42,21 @@ public class Main {
       cat.feed(1.0);
       cat.takeForWalk();*/
 
-      Car impala = new Car("Impala","Chevrolet");
-      impala.typeOfFuel ="Benzyna";
-      impala.color = "Czarnym";
-      impala.yearOfProduction= 1967;
+      Car impala = new Car("Impala","Chevrolet",1967,"Benzyna","Czarny",33000.0);
+
 
       Human Tom = new Human();
       Tom.firstName = "Tom";
       Tom.lastName = "Mighty";
       Tom.pet = dog;
-      Tom.myCar = impala;
-      Tom.humanStat();
-      impala.CarStat();
-      dog.animalStat();
+
+
       Tom.getSalary();
 
-      Tom.setSalary(3150.0);
-      System.out.println(Tom);
+      Tom.setSalary(3250.0);
+      Tom.lastSalary();
+      Tom.setMyCar(impala);
+
 
 
 
