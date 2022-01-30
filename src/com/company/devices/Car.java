@@ -4,8 +4,7 @@ import com.company.creatures.Human;
 
 import java.util.Objects;
 
-public class Car extends Device
-{
+public abstract class Car extends Device {
 
 
     String typeOfFuel;
@@ -19,33 +18,28 @@ public class Car extends Device
         this.value = value;
     }
 
-   public void turnOn()
-   {
-       System.out.println("Pyrpyrpyrpyr khłe khłe..");
-   }
+    public void turnOn() {
+        System.out.println("Pyrpyrpyrpyr khłe khłe..");
+    }
 
- public void sell (Human seller,Human buyer,Double price)
-  {
-      if (seller.getMyCar()!= null)
-      {
-          if (buyer.getCash() >= price)
-          {
-              buyer.setCash(buyer.getCash()-price);
-              seller.setCash(seller.getCash() + price);
-              buyer.carBuyer(seller.getMyCar());
-              seller.carSeller();
-              System.out.println("Mam ten kloc, mam teen klooooc -> znaczy się autko");
-          }
-          else
-          {
-              System.out.println("Brakło kaski ;(");
-          }
-      }
-      else
-      {
-          System.out.println("Hej zaraz Ty wcale nie masz auta !!!");
-      }
-  }
+    public void sell(Human seller, Human buyer, Double price) {
+        if (seller.getMyCar() != null) {
+            if (buyer.getCash() >= price) {
+                buyer.setCash(buyer.getCash() - price);
+                seller.setCash(seller.getCash() + price);
+                buyer.carBuyer(seller.getMyCar());
+                seller.carSeller();
+                System.out.println("Mam ten kloc, mam teen klooooc -> znaczy się autko");
+            } else {
+                System.out.println("Brakło kaski ;(");
+            }
+        } else {
+            System.out.println("Hej zaraz Ty wcale nie masz auta !!!");
+        }
+    }
+
+    public abstract void refuel();
+
 
     @Override
     public boolean equals(Object o) {
