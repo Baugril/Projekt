@@ -7,7 +7,7 @@ import com.company.devices.*;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Animal dog = new Pet("pies");
         dog.age = 4;
         dog.name = "Aggro";
@@ -45,6 +45,27 @@ public class Main {
         System.out.println("Historia pojazdu: " + Tom.getMyCar(0).sprzedaz());
         System.out.println(Tom.getMyCar(0).ostatniWlascicieldane(All));
         Suzuki.getHistoriaZakupow();
+
+
+        Tom.mobile = new Phone("s100","Samsung",2045);
+        Tom.mobile.installNewApp("Facebook",3.5,Tom);
+        Tom.mobile.installNewApp("Netflix",0.0,Tom);
+        Tom.mobile.installNewApp("Twitter",0.0,Tom);
+        Tom.mobile.installNewApp("Instagram",2.3,Tom);
+        Tom.mobile.installNewApp("Messenger",4.8,Tom);
+        Tom.mobile.installNewApp("Google Play",0.0,Tom);
+        Tom.mobile.installNewApp("You Tube",32.5,Tom);
+        Tom.mobile.installNewApp("Kalkulator",14.2,Tom);
+        Tom.mobile.installNewApp("Budzik",0.0,Tom);
+        Tom.mobile.installNewApp("Stoper",52.5,Tom);
+
+        Tom.mobile.darmoweApki();
+        Tom.mobile.kosztAplikacji();
+        Tom.mobile.poCenie();
+        Tom.mobile.poImieniu();
+        Tom.mobile.juzZainstalowana("Budzik");
+
+
 
 
     }
