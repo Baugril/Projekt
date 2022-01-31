@@ -16,28 +16,35 @@ public class Main {
         cat.name = "Niau Niau";
 
 
-        Car impala = new LPG("Impala", "Chevrolet", 1967, "LPG", "Czarny", 33000.0);
-        Car Ford = new Diesel("Ford", "Ford", 1995, "Diesel", "Silver", 23200.0);
-        Car Suzuki = new Diesel("Suzuki", "Ford", 2010, "Diesel", "Silver", 17800.0);
-        Car Toyota = new Electric("Toyota", "Ford", 2020, "Electric", "Silver", 2000.0);
-        Human Tom = new Human(4, "Thomas");
+        Car impala = new LPG("Impala", "Chevrolet", 1967, "LPG", "Czarny", 3300.0);
+        Car Ford = new Diesel("Puma", "Ford", 1995, "Diesel", "Silver", 2320.0);
+        Car Suzuki = new Diesel("Rav", "Suzuki", 2010, "Diesel", "Silver", 1780.0);
+        Car Toyota = new Electric("7", "Toyota", 2020, "Electric", "Silver", 2000.0);
+        Human Tom = new Human(6, "Thomas");
+        Human All = new Human(5, "All");
         Tom.setMyCar(Toyota, 0);
-        Tom.setMyCar(Suzuki, 1);
-        Tom.setMyCar(impala, 2);
+        Tom.setMyCar(impala, 1);
+        Tom.setMyCar(Suzuki, 2);
+        Tom.setMyCar(Ford, 3);
         Tom.setCash(10450.0);
-        Human All = new Human(4, "All");
         All.setCash(4000.0);
-        All.setMyCar(Ford, 1);
 
         Tom.allOfMyCar();
-        Tom.getMyMoney();
-        impala.sell(Tom, All, 2500.0, 2, 2);
-        All.allOfMyCar();
-        Tom.allOfMyCar();
+
         All.getMyMoney();
-        All.weClean();
         Tom.getMyMoney();
         Tom.howManySpaceIhave();
+        Tom.getMyCar(0);
+        All.getMyCar(1);
+        Toyota.sell(Tom, All, 1450.0, 0, 0);
+        Suzuki.sell(Tom, All, 2450.0, 2, 1);
+        All.allOfMyCar();
+        Toyota.sell(All, Tom, 1320.0, 0, 0);
+
+        System.out.println(Tom.getMyCar(0).ostatniWlasciciel());
+        System.out.println("Historia pojazdu: " + Tom.getMyCar(0).sprzedaz());
+        System.out.println(Tom.getMyCar(0).ostatniWlascicieldane(All));
+        Suzuki.getHistoriaZakupow();
 
 
     }

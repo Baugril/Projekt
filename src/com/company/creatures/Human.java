@@ -1,14 +1,10 @@
 package com.company.creatures;
 
-import com.company.creatures.Animal;
 import com.company.devices.Car;
-import com.company.devices.Device;
 import com.company.devices.Phone;
 
-import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.util.Arrays;
-import java.util.Collection;
 
 public class Human {
 
@@ -72,9 +68,12 @@ public class Human {
             if (this.salary > myCar.value) {
                 this.garage[place] = myCar;
                 System.out.println("Udało Ci się kupić auto za gotówkę");
+                this.garage[place].listaWlascicieli.add(this);
             } else if (this.salary > (myCar.value / 12)) {
                 this.garage[place] = myCar;
                 System.out.println("Udało się kupić auto na kredyt.");
+                this.garage[place].listaWlascicieli.add(this);
+
 
             } else {
                 System.out.println("Potrzebiujesz podwyżki lub zmień pracę ,żeby było Cie stać na to auto");
@@ -100,13 +99,16 @@ public class Human {
         }
     }
 
-    public Double getMyMoney() {
+    public void getMyMoney() {
         Double MyMoney = 0.0;
         for (int i = 0; i < this.size; i++) {
             if (this.garage[i] != null) MyMoney += this.garage[i].value;
         }
-        System.out.println("Wartość wszystkich samochodów wynosi :" + MyMoney + " zł.");
-        return MyMoney;
+        if (MyMoney > 0) {
+            System.out.println("Wartość wszystkich samochodów wynosi :" + MyMoney + " zł.");
+        } else if (MyMoney <= 0) {
+            System.out.println("Właściel nie posiada żadnych pojazdów w garażu");
+        }
     }
 
     public int howManySpaceIhave() {
@@ -117,7 +119,7 @@ public class Human {
                 break;
             }
         }
-        System.out.println("Liczba miejsc parkingowych wynosi :" + parkingPlace);
+        System.out.println("Liczba zajętych miejsc parkingowych przez samochody właściciela " + firstName + " wynosi :" + parkingPlace);
         return parkingPlace;
     }
 
@@ -163,14 +165,12 @@ public class Human {
 
     @Override
     public String toString() {
-        return "Human{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", pet=" + pet +
-
-                ", salary=" + salary +
-                ", accessTime=" + accessTime +
-                ", balance=" + balance +
+        return "Ostatni właściciel samochodu:{" +
+                "Imie: '" + firstName + '\'' +
+                ", dnia : " + accessTime +
+                ", za : " + cash +
+                ", kupił samochody: " + Arrays.toString(garage) +
+                ", Jego wielkość garażu wynosi : " + size +
                 '}';
     }
 }
