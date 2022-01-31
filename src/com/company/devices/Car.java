@@ -1,10 +1,11 @@
 package com.company.devices;
 
+import com.company.Sallebly;
 import com.company.creatures.Human;
 
 import java.util.Objects;
 
-public abstract class Car extends Device {
+public abstract class Car extends Device implements Sallebly {
 
 
     String typeOfFuel;
@@ -16,25 +17,28 @@ public abstract class Car extends Device {
         this.typeOfFuel = typeOfFuel;
         this.color = color;
         this.value = value;
+
     }
 
     public void turnOn() {
         System.out.println("Pyrpyrpyrpyr khłe khłe..");
     }
 
-    public void sell(Human seller, Human buyer, Double price) {
-        if (seller.getMyCar() != null) {
+    public void sell(Human seller, Human buyer, Double price, Integer sellerPlace, Integer buyerPlace) {
+        if (seller.getMyCar(sellerPlace) != null) {
+            int buyerPosition = buyer.howManySpaceIhave();
+            if (buyerPosition < 0) throw new IllegalArgumentException("Nie posiadasz wystarczająco miejsca na to auto");
             if (buyer.getCash() >= price) {
                 buyer.setCash(buyer.getCash() - price);
                 seller.setCash(seller.getCash() + price);
-                buyer.carBuyer(seller.getMyCar());
-                seller.carSeller();
+                buyer.carBuyer(buyerPlace, seller.getMyCar(sellerPlace));
+                seller.carSeller(sellerPlace);
                 System.out.println("Mam ten kloc, mam teen klooooc -> znaczy się autko");
             } else {
-                System.out.println("Brakło kaski ;(");
+                throw new IllegalArgumentException("Brakło kaski ;(");
             }
         } else {
-            System.out.println("Hej zaraz Ty wcale nie masz auta !!!");
+            throw new IllegalArgumentException("Hej zaraz Ty wcale nie masz auta !!!");
         }
     }
 
@@ -57,11 +61,11 @@ public abstract class Car extends Device {
     @Override
     public String toString() {
         return "Car{" +
-                "typeOfFuel='" + typeOfFuel + '\'' +
-                ", color='" + color + '\'' +
-                ", value=" + value +
                 ", model='" + model + '\'' +
                 ", producer='" + producer + '\'' +
+                ", color='" + color + '\'' +
+                ", value=" + value +
+                "typeOfFuel='" + typeOfFuel + '\'' +
                 ", yearOfProduction=" + yearOfProduction +
                 '}';
     }

@@ -2,33 +2,52 @@ package com.company.creatures;
 
 import com.company.creatures.Animal;
 import com.company.devices.Car;
+import com.company.devices.Device;
 import com.company.devices.Phone;
 
+import java.lang.reflect.Array;
 import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.Collection;
 
-public class Human extends Animal {
+public class Human {
 
     String firstName;
     String lastName;
     public Animal pet;
-    private Car myCar;
     private Double salary;
     private LocalDate accessTime;
     private Double balance;
     public Double cash;
     public Phone mobile;
+    private Car[] garage;
+    private final Integer size;
 
-    public Human(String firstName, String lastName, Double cash, String species) {
-        super(species);
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.cash = cash;
+    public void newHumanConstructor() {
         this.salary = 4500.0;
         this.accessTime = LocalDate.now();
         this.balance = this.salary;
         this.pet = null;
-        this.myCar = null;
         this.mobile = null;
+        this.garageForNewCar();
+        this.garage = new Car[this.size];
+
+    }
+
+    private void garageForNewCar() {
+        this.garage = new Car[this.size];
+    }
+
+    public Human() {
+
+        this.size = 4;
+        this.newHumanConstructor();
+    }
+
+    public Human(Integer size, String firstName) {
+        this.size = size;
+        this.newHumanConstructor();
+        this.firstName = firstName;
     }
 
 
@@ -40,21 +59,31 @@ public class Human extends Animal {
         this.mobile = mobile;
     }
 
-    public Car getMyCar() {
-        return myCar;
-    }
-
-    public void setMyCar(Car myCar) {
-        if (this.salary > myCar.value) {
-            System.out.println("Udało Ci się kupić auto za gotówkę");
-            this.myCar = myCar;
-        } else if (this.salary > (myCar.value / 12)) {
-            System.out.println("Udało się kupić auto na kredyt.");
-            this.myCar = myCar;
+    public Car getMyCar(Integer placeForCar) {
+        if (placeForCar >= 0 && placeForCar < this.size) {
+            return this.garage[placeForCar];
         } else {
-            System.out.println("Potrzebiujesz podwyżki lub zmień pracę ,żeby było Cie stać na to auto");
+            throw new IllegalArgumentException("Nie posiadasz takiego miejsca w garażu");
         }
     }
+
+    public void setMyCar(Car myCar, Integer place) {
+        if (place >= 0 && place < this.size) {
+            if (this.salary > myCar.value) {
+                this.garage[place] = myCar;
+                System.out.println("Udało Ci się kupić auto za gotówkę");
+            } else if (this.salary > (myCar.value / 12)) {
+                this.garage[place] = myCar;
+                System.out.println("Udało się kupić auto na kredyt.");
+
+            } else {
+                System.out.println("Potrzebiujesz podwyżki lub zmień pracę ,żeby było Cie stać na to auto");
+            }
+
+        } else throw new IllegalArgumentException("Nie posiadasz takiego miejsca w garażu");
+
+    }
+
 
     public void getSalary() {
         System.out.println(accessTime + " Wynagrodzenie wynosiło : " + balance + " zł.");
@@ -71,9 +100,40 @@ public class Human extends Animal {
         }
     }
 
+    public Double getMyMoney() {
+        Double MyMoney = 0.0;
+        for (int i = 0; i < this.size; i++) {
+            if (this.garage[i] != null) MyMoney += this.garage[i].value;
+        }
+        System.out.println("Wartość wszystkich samochodów wynosi :" + MyMoney + " zł.");
+        return MyMoney;
+    }
+
+    public int howManySpaceIhave() {
+        int parkingPlace = -1;
+        for (int i = 0; i < this.size; i++) {
+            if (this.garage[i] == null) {
+                parkingPlace = i;
+                break;
+            }
+        }
+        System.out.println("Liczba miejsc parkingowych wynosi :" + parkingPlace);
+        return parkingPlace;
+    }
+
     void lastSalary() {
 
         System.out.println("Nowe wynagrodzenie wynosi : " + salary + " zł.");
+    }
+
+    public void weClean() {
+        Arrays.sort(this.garage, (myCar1, myCar2) ->
+        {
+            Integer check1 = (myCar1 == null) ? Integer.MAX_VALUE : myCar1.yearOfProduction;
+            Integer check2 = (myCar2 == null) ? Integer.MAX_VALUE : myCar2.yearOfProduction;
+            return (check1.compareTo(check2));
+
+        });
     }
 
     public Double getCash() {
@@ -84,12 +144,21 @@ public class Human extends Animal {
         this.cash = cash;
     }
 
-    public void carBuyer(Car forMe) {
-        this.myCar = forMe;
+    public void allOfMyCar() {
+        for (Car myCar : this.garage) {
+            if (myCar != null) {
+                System.out.println(firstName + " Posiada zaparkowany samochód :" + myCar);
+            }
+        }
     }
 
-    public void carSeller() {
-        this.myCar = null;
+
+    public void carBuyer(Integer place, Car forMe) {
+        this.garage[place] = forMe;
+    }
+
+    public void carSeller(Integer place) {
+        this.garage[place] = null;
     }
 
     @Override
@@ -98,7 +167,7 @@ public class Human extends Animal {
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", pet=" + pet +
-                ", myCar=" + myCar +
+
                 ", salary=" + salary +
                 ", accessTime=" + accessTime +
                 ", balance=" + balance +

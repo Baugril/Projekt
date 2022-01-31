@@ -4,7 +4,7 @@ public abstract class Device
 {
     final String model;
     final String producer;
-    Integer yearOfProduction;
+    public final Integer yearOfProduction;
 
     public Device(String model, String producer, Integer yearOfProduction) {
         this.model = model;

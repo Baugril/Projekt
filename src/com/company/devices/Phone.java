@@ -57,7 +57,7 @@ public class Phone extends Device implements Sallebly {
         System.out.println("Ta da da ta da...");
     }
 
-    public void sell(Human seller, Human buyer, Double price) {
+    public void sell(Human seller, Human buyer, Double price,Integer sellerPlace, Integer buyerPlace) {
         if (buyer.getCash() >= price) {
             if (seller.getMobile() != null) {
                 buyer.setCash(buyer.getCash() - price);
@@ -84,4 +84,8 @@ public class Phone extends Device implements Sallebly {
                 ", os='" + os + '\'' +
                 '}';
     }
-}
+
+
+
+    }
+

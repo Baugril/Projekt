@@ -39,7 +39,10 @@ public abstract class  Animal implements Sallebly,Feedable
             this.weight = DEFAULT_ANIMAL_WEIGHT;
         }
     }
-  public  void feed()
+
+
+
+    public  void feed()
     {
         weight++;
         System.out.println("Ważę : "+weight+" kg.");
@@ -80,7 +83,7 @@ public abstract class  Animal implements Sallebly,Feedable
             System.out.println("Spaliłem całe jedzonko! Teraz ważę "+weight+"kg");
         }
     }
-    public void sell (Human seller, Human buyer , Double price)
+    public void sell (Human seller, Human buyer , Double price,Integer sellerPlace, Integer buyerPlace)
     {
         if (seller.pet != null)
         {
